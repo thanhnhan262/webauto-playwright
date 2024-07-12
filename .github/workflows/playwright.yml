@@ -21,6 +21,8 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test --project=chromium
+      env:
+        PLAYWRIGHT_TEST_BASE_URL: https://the-internet.herokuapp.com
     - uses: actions/upload-artifact@v4
       if: always()
       with:
