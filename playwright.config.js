@@ -1,14 +1,13 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 import dotenv from 'dotenv';
+import path from 'path';
 
-// Load environment variables from .env file if it exists
-dotenv.config();
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -29,7 +28,7 @@ module.exports = defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     //BASEURL can be set from Github actions workflow, or set dirrectly from running command like 'BASE_URL=https://staging.example.comn npx playwright test'
-    baseURL: process.env.BASE_URL || 'https://the-internet.herokuapp.com',
+    baseURL: process.env.CI_BASE_URL || process.env.LOCAL_BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     retries: 1,
@@ -41,12 +40,12 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'setup',
-      testMatch: '**/*.setup.js',
-      teardown: 'teardown',
+      testMatch: '*.setup.js',
+      teardown: 'teardown', // 'teardown' project will be run after 'set up' project and its dependent projects like 'chromium' finish running
     },
     {
       name: 'teardown',
-      testMatch: '**/*.teardown.js'
+      testMatch: '*.teardown.js'
     },
     {
       name: 'chromium',
@@ -54,15 +53,17 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   dependencies: ['setup'],
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   dependencies: ['setup'],
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
