@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
   repository_dispatch:
-    types: run-playwright-test
+    types: [run-playwright-test]
   deployment_status:
 jobs:
   pr-review:
