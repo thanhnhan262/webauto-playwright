@@ -4,7 +4,7 @@ import { LoginPage } from "../pages/loginPage";
 
 export class Accessment {
     constructor(private page: Page){}
-    async login(user: string, pass: string) {
+    async loginFromLandingPage(user: string, pass: string) {
         const landingPage = new LandingPage(this.page)
         await landingPage.profileNavigation.profileIcon.click()
         await landingPage.profileNavigation.signInBtn.click()
