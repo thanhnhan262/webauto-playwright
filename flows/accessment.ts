@@ -1,6 +1,6 @@
 import { Page } from "playwright/test";
 import { LandingPage } from "../pages/landingPage";
-import { LoginPage } from "../pages/LoginPage";
+import { LoginPage } from "../pages/loginPage";
 
 export class Accessment {
     constructor(private page: Page){}
