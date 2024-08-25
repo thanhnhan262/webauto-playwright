@@ -5,7 +5,7 @@ import { LoginPage } from '../pages/loginPage';
 import { DigitalLibraryPage } from '../pages/digitalLibraryPage';
 import { LandingPage } from '../pages/landingPage';
 
-test('login from landing page', async ({ page }, testInfo) => {
+test('Successful login', async ({ page }) => {
     await page.goto('/')
     
     const accessment = new Accessment(page)
@@ -23,7 +23,20 @@ test('login from landing page', async ({ page }, testInfo) => {
     await expect(loginPage.userNameTbx).toBeVisible()
 })
 
-test('login from digital library page', async ({ page }, testInfo) => {
+test('Failed credentials login', async ({page})=>{
+    await page.goto('/')
+    const landingPage = new LandingPage(page)
+    await landingPage.profileNavigation.profileIcon.click()
+    await landingPage.profileNavigation.signInBtn.click()
+
+    const username = 'thanhnhan262'
+    const password = 'wrongpass'
+    const loginPage = new LoginPage(page)
+    await loginPage.login(username, password)
+    await expect(loginPage.messageBox).toHaveText('The username or PIN is incorrect. Please try again')
+})
+
+test('Login from digital library page', async ({ page }) => {
     await page.goto('/')
     
     const landingPage = new LandingPage(page)
