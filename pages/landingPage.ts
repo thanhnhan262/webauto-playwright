@@ -1,5 +1,5 @@
 import { Page } from "playwright/test";
-import { ProfileNavigationComponent } from "./components/profileNavigatioComponent";
+import ProfileNavigationComponent from "./components/profileNaviComponent";
 
 export class LandingPage {    
 

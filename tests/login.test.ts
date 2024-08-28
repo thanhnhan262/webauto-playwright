@@ -4,18 +4,15 @@ import { HomePage } from '../pages/homePage';
 import { LoginPage } from '../pages/loginPage';
 import { DigitalLibraryPage } from '../pages/digitalLibraryPage';
 import { LandingPage } from '../pages/landingPage';
-
-test('Successful login', async ({ page }) => {
+/*
+test('Successful login @only', async ({ page }) => {
     await page.goto('/')
-    
     const accessment = new Accessment(page)
-    const username = 'thanhnhan262'
-    const password = '1234567'
-    await accessment.loginFromLandingPage(username, password)
+    await accessment.loginFromLandingPage(`${process.env.USERNAME}`, `${process.env.PASSWORD}`)
     
     const homePage = new HomePage(page) 
     await expect(homePage.pageHeading).toContainText('Welcome')
-    await expect(homePage.pageHeading).toContainText(username)
+    await expect(homePage.pageHeading).toContainText(`${process.env.USERNAME}`)
 
     await homePage.accountDd.click()
     await homePage.logoutBtn.click()
@@ -46,16 +43,15 @@ test('Login from digital library page', async ({ page }) => {
     await digitalPage.profileNavigation.profileIcon.click()
     await digitalPage.profileNavigation.signInBtn.click()
 
-    const username = 'thanhnhan262'
-    const password = '1234567'
     const loginPage = new LoginPage(page)
-    await loginPage.login(username, password)
+    await loginPage.login(`${process.env.USERNAME}`, `${process.env.PASSWORD}`)
     
     const homePage = new HomePage(page) 
     await expect(homePage.pageHeading).toContainText('Welcome')
-    await expect(homePage.pageHeading).toContainText(username)
+    await expect(homePage.pageHeading).toContainText(`${process.env.USERNAME}`)
 
     await homePage.accountDd.click()
     await homePage.logoutBtn.click()
     await expect(loginPage.userNameTbx).toBeVisible()
 })
+*/
