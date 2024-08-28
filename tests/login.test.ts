@@ -4,8 +4,8 @@ import { HomePage } from '../pages/homePage';
 import { LoginPage } from '../pages/loginPage';
 import { DigitalLibraryPage } from '../pages/digitalLibraryPage';
 import { LandingPage } from '../pages/landingPage';
-/*
-test('Successful login @only', async ({ page }) => {
+
+test('Successful login', async ({ page }) => {
     await page.goto('/')
     const accessment = new Accessment(page)
     await accessment.loginFromLandingPage(`${process.env.USERNAME}`, `${process.env.PASSWORD}`)
@@ -54,4 +54,4 @@ test('Login from digital library page', async ({ page }) => {
     await homePage.logoutBtn.click()
     await expect(loginPage.userNameTbx).toBeVisible()
 })
-*/
+

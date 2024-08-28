@@ -1,13 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { Accessment } from '../flows/accessment';
 import { HomePage } from '../pages/homePage';
-import { LoginPage } from '../pages/loginPage';
-import { DigitalLibraryPage } from '../pages/digitalLibraryPage';
-import { LandingPage } from '../pages/landingPage';
-import { describe } from 'node:test';
-import exp from 'node:constants';
 import { CheckoutDetailPage } from '../pages/checkoutDetailPage';
-import { executionAsyncId } from 'node:async_hooks';
+
 
 test.beforeEach(async ({page}) => {
     await page.goto('/')
@@ -18,7 +13,7 @@ test.afterEach(async ({page})=> {
     await new Accessment(page).logout()
 })
 
-test.only("Verify borrowing info", async ({ page }) => {
+test("Verify borrowing info", async ({ page }) => {
     const homePage = new HomePage(page)
     const str = await homePage.checkoutNum.textContent()
     const num = str?.replace(/\s/g, "")
