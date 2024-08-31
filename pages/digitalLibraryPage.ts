@@ -1,7 +1,7 @@
 import { Page } from "playwright/test";
 import ProfileNavigationComponent from "./components/profileNaviComponent";
 
-export class DigitalLibraryPage {    
+export default class DigitalLibraryPage {    
 
     constructor(private page: Page){}
     

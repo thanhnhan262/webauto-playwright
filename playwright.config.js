@@ -34,7 +34,8 @@ module.exports = defineConfig({
     retries: 1,
     trace: 'on-first-retry',
     screenshot: "only-on-failure",
-    testIdAttribute: 'testid'
+    testIdAttribute: 'testid',
+    globalSetup: require.resolve('./tests/supports/global.hooks.ts')
   },
 
   /* Configure projects for major browsers */
@@ -51,7 +52,10 @@ module.exports = defineConfig({
     {
       name: 'chromium',
       dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        require: './tests/supports/global.hooks.ts', 
+        ...devices['Desktop Chrome'] 
+      },
     },
 
     // {

@@ -1,6 +1,6 @@
 import { Page } from "playwright/test";
 
-export class LoginPage{
+export default class LoginPage{
 
     constructor(private page: Page){}
 

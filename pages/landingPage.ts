@@ -1,12 +1,14 @@
 import { Page } from "playwright/test";
-import ProfileNavigationComponent from "./components/profileNaviComponent";
+import ProfileNaviComponent from "./components/profileNaviComponent"
+import FooterNaviComponent from "./components/footerNaviComponent"
 
-export class LandingPage {    
+export default class LandingPage {    
 
     constructor(private page: Page){}
     
     //inherit
-    profileNavigation = new ProfileNavigationComponent(this.page)
+    profileNavigation = new ProfileNaviComponent(this.page)
+    footerNavigation = new FooterNaviComponent(this.page)
 
     //locators
     digitalLibraryLnk = this.page.locator("//li[contains(@class, 'cpl-icon-list-item')]//*[text()='Digital Library']")

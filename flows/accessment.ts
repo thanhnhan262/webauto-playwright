@@ -4,7 +4,7 @@ import { LoginPage } from "../pages/loginPage";
 import ProfileNavigationComponent from "../pages/components/profileNaviComponent";
 import { AccountNaviComponent } from "../pages/components/acountNaviComponent";
 
-export class Accessment {
+export default class Accessment {
     constructor(private page: Page){}
     async loginFromLandingPage(user: string, pass: string) {
         const landingPage = new LandingPage(this.page)

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { Accessment } from '../flows/accessment';
-import { HomePage } from '../pages/homePage';
-import { CheckoutDetailPage } from '../pages/checkoutDetailPage';
+import Accessment from '../flows/accessment';
+import HomePage from '../pages/homePage';
+import CheckoutDetailPage from '../pages/checkoutDetailPage';
 
 
 test.beforeEach(async ({page}) => {

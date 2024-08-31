@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { Accessment } from '../flows/accessment';
-import { HomePage } from '../pages/homePage';
-import { LoginPage } from '../pages/loginPage';
-import { DigitalLibraryPage } from '../pages/digitalLibraryPage';
-import { LandingPage } from '../pages/landingPage';
+import Accessment from '../flows/accessment';
+import HomePage from '../pages/homePage';
+import LoginPage from '../pages/loginPage';
+import DigitalLibraryPage from '../pages/digitalLibraryPage';
+import LandingPage from '../pages/landingPage';
 
 test('Successful login', async ({ page }) => {
     await page.goto('/')

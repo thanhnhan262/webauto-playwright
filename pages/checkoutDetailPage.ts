@@ -1,7 +1,7 @@
 import { Page } from "playwright/test";
 import ProfileNavigationComponent from "./components/profileNaviComponent";
 
-export class CheckoutDetailPage {    
+export default class CheckoutDetailPage {    
 
     constructor(private page: Page){}
 
