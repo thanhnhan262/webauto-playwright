@@ -11,7 +11,7 @@ test('Successful login', async ({ page }) => {
     await accessment.loginFromLandingPage(`${process.env.USERNAME}`, `${process.env.PASSWORD}`)
     
     const homePage = new HomePage(page) 
-    await expect(homePage.pageHeading).toContainText('Welcome')
+    await expect(homePage.pageHeading).toContainText(/Welcome, .*/)
     await expect(homePage.pageHeading).toContainText(`${process.env.USERNAME}`)
 
     await homePage.accountDd.click()
@@ -47,7 +47,7 @@ test('Login from digital library page', async ({ page }) => {
     await loginPage.login(`${process.env.USERNAME}`, `${process.env.PASSWORD}`)
     
     const homePage = new HomePage(page) 
-    await expect(homePage.pageHeading).toContainText('Welcome')
+    await expect(homePage.pageHeading).toContainText(/Welcome, .*/)
     await expect(homePage.pageHeading).toContainText(`${process.env.USERNAME}`)
 
     await homePage.accountDd.click()

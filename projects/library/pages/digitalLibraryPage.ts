@@ -1,5 +1,5 @@
 import { Page } from "playwright/test";
-import ProfileNavigationComponent from "./components/profileNaviComponent";
+import ProfileNavigationComponent from "./components/headerNavigationComponent";
 
 export default class DigitalLibraryPage {    
 

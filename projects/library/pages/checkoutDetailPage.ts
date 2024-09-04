@@ -1,5 +1,4 @@
 import { Page } from "playwright/test";
-import ProfileNavigationComponent from "./components/profileNaviComponent";
 
 export default class CheckoutDetailPage {    
 

@@ -1,8 +1,7 @@
 import { Page } from "playwright/test";
-import { LandingPage } from "../pages/landingPage";
-import { LoginPage } from "../pages/loginPage";
-import ProfileNavigationComponent from "../pages/components/profileNaviComponent";
-import { AccountNaviComponent } from "../pages/components/acountNaviComponent";
+import LandingPage from "../pages/landingPage";
+import LoginPage from "../pages/loginPage";
+import AccountNavigationComponent from "../pages/components/acountNaviComponent";
 
 export default class Accessment {
     constructor(private page: Page){}
@@ -17,7 +16,7 @@ export default class Accessment {
     }
 
     async logout() {
-        const profileNav = new AccountNaviComponent(this.page)
+        const profileNav = new AccountNavigationComponent(this.page)
         await profileNav.accountBar.click()
         await profileNav.logoutBtn.click()
     }

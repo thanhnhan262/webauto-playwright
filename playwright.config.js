@@ -13,7 +13,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
+  testDir: './projects',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -34,8 +34,7 @@ module.exports = defineConfig({
     retries: 1,
     trace: 'on-first-retry',
     screenshot: "only-on-failure",
-    testIdAttribute: 'testid',
-    globalSetup: require.resolve('./tests/supports/global.hooks.ts')
+    testIdAttribute: 'testid'
   },
 
   /* Configure projects for major browsers */
@@ -52,8 +51,7 @@ module.exports = defineConfig({
     {
       name: 'chromium',
       dependencies: ['setup'],
-      use: {
-        require: './tests/supports/global.hooks.ts', 
+      use: { 
         ...devices['Desktop Chrome'] 
       },
     },

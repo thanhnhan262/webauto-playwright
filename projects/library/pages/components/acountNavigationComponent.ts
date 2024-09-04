@@ -1,6 +1,6 @@
 import { Page } from "playwright/test";
 
-export default class AccountNaviComponent {
+export default class AccountNavigationComponent {
     
     constructor(private page: Page){}
 

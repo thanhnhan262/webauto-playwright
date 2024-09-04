@@ -1,6 +1,6 @@
 import { Page } from "playwright/test";
 
-export default class FooterNaviComponent {
+export default class FooterNavigationComponent {
     
     constructor(private page: Page){}
 
