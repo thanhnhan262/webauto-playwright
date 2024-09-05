@@ -71,11 +71,11 @@ jobs:
         echo Project: ${{github.event.inputs.project}}
         echo Environement: ${{github.event.inputs.environment}}
         echo Tags: ${{ github.event.inputs.tags }}
-        tags="${{ github.event.inputs.tags }}"
-        tags_grep=$(echo "$tags" | sed 's/[[:space:]]*,[[:space:]]*/|@/g' | sed 's/^/@/' | sed 's/$/"/')
-        tags_grep="\"$tags_grep\""
-        echo "Converted tags for Playwright: $tags_grep"
-        ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }}/tests/noLogin.test.ts --grep "$tags_grep" --project=chromium
+        tagString="${{ github.event.inputs.tags }}"
+        spaceRemovedTag=${tagString//\ /}
+        tags='"''@'${spaceRemovedTag//\,/\|\@}'"'
+        echo Converted tags for Playwright: $tags
+        ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }}/tests/noLogin.test.ts --grep $tags --project=chromium
     - uses: actions/upload-artifact@v4
       if: always()
       with:
