@@ -24,7 +24,7 @@ test("Search jobs @search",  async ({ page }) => {
 
 })
 
-test("About library", async ({ page }) => {
+test("About library @about", async ({ page }) => {
     await test.step("access page", async () => {
         await page.goto('/')
     })
@@ -39,7 +39,7 @@ test("About library", async ({ page }) => {
     })
 })
 
-test("Contact us", async ({ page }) => {
+test("Contact us @contact", async ({ page }) => {
     await test.step("access page", async () => {
         await page.goto('/')
     })
