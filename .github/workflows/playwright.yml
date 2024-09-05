@@ -32,7 +32,7 @@ on:
         description: "Run test on device(s):"
         required: true
         type: string
-        default: chrome
+        default: chromium
 jobs:
   pr-review:
     timeout-minutes: 60
@@ -77,7 +77,7 @@ jobs:
         
         tagString="${{ github.event.inputs.tags }}"
         spaceRemovedTag=${tagString//\ /}
-        tags='@'${spaceRemovedTag//\,/\|\@}
+        tags='"''@'${spaceRemovedTag//\,/\|\@}'"'
         echo Converted tags for Playwright: $tags
 
         devicesString="${{ github.event.inputs.devices }}"
