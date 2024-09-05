@@ -28,8 +28,11 @@ on:
         description: 'Run only test case with tags: (for example: tag1,tag2,tag3)'
         required: false
         type: string
-
-      
+      devices:
+        description: "Run test on device(s):"
+        required: true
+        type: string
+        default: chrome
 jobs:
   pr-review:
     timeout-minutes: 60
@@ -71,11 +74,19 @@ jobs:
         echo Project: ${{github.event.inputs.project}}
         echo Environement: ${{github.event.inputs.environment}}
         echo Tags: ${{ github.event.inputs.tags }}
+        
         tagString="${{ github.event.inputs.tags }}"
         spaceRemovedTag=${tagString//\ /}
         tags='@'${spaceRemovedTag//\,/\|\@}
         echo Converted tags for Playwright: $tags
-        ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }}/tests/noLogin.test.ts --grep ${tags} --project=chromium
+
+        devicesString="${{ github.event.inputs.devices }}"
+        spaceRemovedDevices=${devicesString//\ /}
+        devices='--project='${spaceRemovedDevices//\,/ --project=}
+        
+        cmd="ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }}  --grep "$tags" "$devices""
+        echo $cmd
+        eval $cmd
     - uses: actions/upload-artifact@v4
       if: always()
       with:
