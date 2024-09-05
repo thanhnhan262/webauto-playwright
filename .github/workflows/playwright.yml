@@ -65,7 +65,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: ENV=${{github.env.inputs.environment}} npx playwright test ./projects/${{github.env.inputs.project}}/tests/noLogin.test.ts --project=chromium
+      run: ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }}/tests/noLogin.test.ts --project=chromium
     - uses: actions/upload-artifact@v4
       if: always()
       with:
