@@ -4,9 +4,8 @@ import LandingPage from '../pages/landingPage';
 import HourAndLocationsPage from '../pages/hourAndLocationsPage';
 import SearchPage from '../pages/searchPage';
 import SearchResultPage from '../pages/searchResultPage';
-import exp from 'constants';
 
-test("Search jobs", async ({ page }) => {
+test("Search jobs @search",  async ({ page }) => {
     //access page
     await test.step("access website", async () => {
         await page.goto('/')
@@ -107,7 +106,7 @@ test("Hours and locations", async ({ page }) => {
 })
 
 test("Verify rearch result", async ({ page }) => {
-    const keyword = "dragon"
+    const keyword = "space"
 
     await test.step("access page", async () => {
         await page.goto('/')
@@ -132,7 +131,7 @@ test("Verify rearch result", async ({ page }) => {
         for (const book of foundBooks) {
             const text = book.title.toLowerCase() + " - " + book.subTitle.toLowerCase()
             expect(text).toContain(keyword)
-        }  
+        }
     })
 })
 
