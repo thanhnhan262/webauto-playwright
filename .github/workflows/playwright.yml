@@ -73,9 +73,9 @@ jobs:
         echo Tags: ${{ github.event.inputs.tags }}
         tagString="${{ github.event.inputs.tags }}"
         spaceRemovedTag=${tagString//\ /}
-        tags='"''@'${spaceRemovedTag//\,/\|\@}'"'
+        tags='@'${spaceRemovedTag//\,/\|\@}
         echo Converted tags for Playwright: $tags
-        ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }}/tests/noLogin.test.ts --grep $tags --project=chromium
+        ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }}/tests/noLogin.test.ts --grep ${tags} --project=chromium
     - uses: actions/upload-artifact@v4
       if: always()
       with:
