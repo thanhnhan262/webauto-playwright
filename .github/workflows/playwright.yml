@@ -67,13 +67,15 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: |
-        echo "Test is running on
-        echo "  Project: ${{github.event.inputs.project}}"
-        echo "  Environement: ${{github.event.inputs.environment}}"
-        echo "  Tags: ${{ github.event.inputs.tags }}"
-        tags_string="${{ github.event.inputs.tags }}"
-        echo "@(${tags_string//,/|})"
-        ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }} --grep "@(${tags_string//,/|})" --project=chromium
+        echo Test is running on
+        echo Project: ${{github.event.inputs.project}}
+        echo Environement: ${{github.event.inputs.environment}}
+        echo Tags: ${{ github.event.inputs.tags }}
+        tags="${{ github.event.inputs.tags }}"
+        tags_grep=$(echo "$tags" | sed 's/,/|/g' | sed 's/^/@/;s/$/)/')
+        tags_grep="(@${tags_grep}"
+        echo "Converted tags for Playwright: $tags_grep"
+        ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }} --grep "$tags_grep" --project=chromium
     - uses: actions/upload-artifact@v4
       if: always()
       with:
