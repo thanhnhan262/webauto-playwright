@@ -4,9 +4,9 @@ on:
   #   branches: [ main, master ]
   # pull_request:
   #   branches: [ main, master ]
-  repository_dispatch:
+  repository_dispatch: #trigged from another job
     types: [run-playwright-test]
-  workflow_dispatch:
+  workflow_dispatch: #for manual run
     inputs:
       project:
         description: 'Run test on project:'
@@ -24,6 +24,7 @@ on:
           - dev
           - stage
           - uat
+        default: stage
       tags:
         description: 'Run only test case with tags: (for example: tag1,tag2,tag3)'
         required: false
@@ -74,11 +75,11 @@ jobs:
         echo Project: ${{github.event.inputs.project}}
         echo Environement: ${{github.event.inputs.environment}}
         echo Tags: ${{ github.event.inputs.tags }}
+        echo Devices: ${{ github.event.inputs.devices }}
         
         tagString="${{ github.event.inputs.tags }}"
         spaceRemovedTag=${tagString//\ /}
         tags='"''@'${spaceRemovedTag//\,/\|\@}'"'
-        echo Converted tags for Playwright: $tags
 
         devicesString="${{ github.event.inputs.devices }}"
         spaceRemovedDevices=${devicesString//\ /}
