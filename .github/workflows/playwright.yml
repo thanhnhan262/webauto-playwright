@@ -73,7 +73,6 @@ jobs:
         echo Tags: ${{ github.event.inputs.tags }}
         tags="${{ github.event.inputs.tags }}"
         tags_grep=$(echo "$tags" | sed 's/,/|@/g' | sed 's/^/@/')
-        tags_grep="@${tags_grep"
         echo "Converted tags for Playwright: $tags_grep"
         ENV=${{ github.event.inputs.environment }} npx playwright test ./projects/${{ github.event.inputs.project }} --grep "$tags_grep" --project=chromium
     - uses: actions/upload-artifact@v4
