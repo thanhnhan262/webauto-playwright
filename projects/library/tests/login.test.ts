@@ -23,8 +23,8 @@ test('Successful login', async ({ page }) => {
 test('Failed credentials login', async ({page})=>{
     await page.goto('/')
     const landingPage = new LandingPage(page)
-    await landingPage.profileNavigation.profileIcon.click()
-    await landingPage.profileNavigation.signInBtn.click()
+    await landingPage.headerNavigation.profileIcon.click()
+    await landingPage.headerNavigation.signInBtn.click()
 
     const username = 'thanhnhan262'
     const password = 'wrongpass'

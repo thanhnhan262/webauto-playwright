@@ -1,9 +1,9 @@
 import { Page } from "playwright/test";
 
-export default class HomePage{
+export default class HomePage {
 
-    constructor(private page: Page){}
-    
+    constructor(private page: Page) { }
+
     pageHeading = this.page.getByTestId("user_dashboard_page_heading")
 
     //top-right navigation items
@@ -16,7 +16,7 @@ export default class HomePage{
     checkoutNum = this.page.locator("//div[@testid='borrowing_widget']//a[@data-section='checkedout']/span")
     onHoldNum = this.page.locator("//div[@testid='borrowing_widget']//a[@data-section='holds']/span")
     borrowHistoryNum = this.page.locator("//div[@testid='borrowing_widget']//a[@data-section='recently_returned']/span")
-    feeNum  = this.page.locator("//div[@testid='borrowing_widget']//a[@data-section='fines']/span")
+    feeNum = this.page.locator("//div[@testid='borrowing_widget']//a[@data-section='fines']/span")
 
 
 }

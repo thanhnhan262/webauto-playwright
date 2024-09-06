@@ -7,9 +7,10 @@ import path from 'path';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+const environment = process.env.ENV
+dotenv.config({ path: path.resolve(__dirname + "/projects/library/tests/supports/environments", `.env.${environment}`) });
 
-/**
+/*
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
@@ -51,22 +52,20 @@ module.exports = defineConfig({
     {
       name: 'chromium',
       dependencies: ['setup'],
-      use: { 
-        ...devices['Desktop Chrome'] 
+      use: {
+        ...devices['Desktop Chrome']
       },
     },
-
-    // {
-    //   name: 'firefox',
-    //   dependencies: ['setup'],
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   dependencies: ['setup'],
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'firefox',
+      dependencies: ['setup'],
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      dependencies: ['setup'],
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against mobile viewports. */
     // {
