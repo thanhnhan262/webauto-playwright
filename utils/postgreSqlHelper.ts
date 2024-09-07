@@ -1,15 +1,15 @@
-import { Connection, getConnectionConfig } from 'postgrejs'
+import { Connection } from 'postgrejs'
 
 export default class PostgreSqlHelper {
 
   private connection: Connection
   constructor() {
     this.connection = new Connection({
-      host: "localhost",
-      port: 5432,
-      database: "postgres",
-      user: "postgres",
-      password: "admin",
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      database: process.env.DB_DATABASE,
+      user: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
       ssl: false
     })
   }
