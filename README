@@ -1,0 +1,7 @@
+>>>Test can be executed by one of ways below:
+1. Local docker exection
+2. Github Actions manual exection
+3. Github Actions events trigger execution
+    3.1 PR to main branch/push to main
+    3.2 Triggered from another job
+4. Execute on VS Code
