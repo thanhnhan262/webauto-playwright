@@ -5,3 +5,18 @@
     3.1 PR to main branch/push to main
     3.2 Triggered from another job
 4. Execute on VS Code
+
+>>>How to run on local docker env
+0. Maker docker is running on your local
+1. Download this repo to local
+2. cd to docker-run directory
+3. Build docker image
+4. Run a docker containe with the built image above. For example:
+    docker run --rm -it --name playwright-run \
+      -e GITHUB_PAT="ghp_Pe12234234m2h34hj2g3hjgqhj3wg423" \
+      -e TEST_PROJECT="library" \
+      -e TEST_ENV="stage" \
+      -e TEST_TAGS="search, about" \
+      -e TEST_DEVICES="chromium, firefox" \
+      -v ./result:/app/script \
+      playwright
